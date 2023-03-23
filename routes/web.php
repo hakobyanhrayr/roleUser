@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+//Route::get('welcome',[PostController::class,'index']);
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+//Route::get('add-post',[PostController::class,'create'])->name('add.post');
+//Route::post('add-post',[PostController::class,'store'])->name('store.post');
+//
+//Route::get('edit-post/{id}',[PostController::class,'edit'])->name('edit.post');
+//Route::put('edit-post/{id}',[PostController::class,'update'])->name('update.post');
+//
+//Route::delete('delete-post/{id}',[PostController::class,'destroy'])->name('delete.post');
+
+
+Route::middleware(['auth'])->group(function (){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('add-post',[PostController::class,'create'])->name('add.post');
+    Route::post('add-post',[PostController::class,'store'])->name('store.post');
+
+    Route::get('edit-post/{id}',[PostController::class,'edit'])->name('edit.post');
+    Route::put('edit-post/{id}',[PostController::class,'update'])->name('update.post');
+
+    Route::delete('delete-post/{id}',[PostController::class,'destroy'])->name('delete.post');
 });
