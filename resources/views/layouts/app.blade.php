@@ -30,7 +30,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                <a href="{{route('home')}}" style="color: black;text-decoration: none">Dashboard</a>
+                <a href="{{route('roles.index')}}" style="color: black;text-decoration: none; margin-left: 30px">Role</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -39,6 +40,10 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <!--Role links-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('roles.index') }}"></a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
